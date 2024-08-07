@@ -1,8 +1,12 @@
-
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <main>
+      <div>
+        <img src="./banner.jpg" alt="Banner" className="w-100" />
+      </div>
+    </main>
   )
 }
 

@@ -1,1 +1,13 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
+
+a{
+    text-decoration: none;
+}
+
+.bg-header{
+    background-color: #171717;
+}
+
+.color-header{
+    color: #01AC49;
+}
