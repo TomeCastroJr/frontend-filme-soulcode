@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
-import {getDiretor,updateDiretor} from "../api/diretor";
+import { getDiretor, updateDiretor } from "../api/diretor";
 
 
 const EditarDiretor = () => {

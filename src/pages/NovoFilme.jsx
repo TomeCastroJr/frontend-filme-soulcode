@@ -61,46 +61,8 @@ const NovoFilme = () => {
             <smal className="text-danger">Data obrigatória</smal>
           )}
         </div>
-        
-        <div>
-          <label htmlFor="nome">Nome do diretor</label>
-          <input
-            type="text"
-            id="nome"
-            className="form-control"
-            {...register("diretor.nome", { required: true, maxLength: 200 })}
-          />
-          {errors.diretor?.nome && (
-            <small className="text-danger">A cidade é inválida!</small>
-          )}
-        </div>
-
-        <div>
-          <label htmlFor="nascimento">Nascimento</label>
-          <input 
-            type="date" 
-            id="nascimento"
-            className="form-control"
-            {...register("diretor.nascimento", { required: true })}
-          />
-          {errors.diretor?.nascimento && (
-            <smal className="text-danger">Data de nascimento obrigatória</smal>
-          )}
-        </div>
-
-        <div>
-          <label htmlFor="nacionalidade">Nacionalidade</label>
-          <input
-            type="text"
-            id="nacionalidade"
-            className="form-control"
-            {...register("diretor.nacionalidade", { required: true, maxLength: 200 })}
-          />
-          {errors.diretor?.nacionalidade && (
-            <small className="text-danger">Nacionalidade obrigatória</small>
-          )}
-        </div>
-
+      
+          
         <Button className="mt-3" type="submit">
           Cadastrar filme
         </Button>

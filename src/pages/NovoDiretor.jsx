@@ -1,12 +1,10 @@
 import { Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { addDiretor } from "../api/diretor";
 import { useEffect, useState } from "react";
 import { getFilmes } from "../api/filme";
-
-
 
 const NovoDiretor = () => {
   // método useForm
@@ -21,7 +19,7 @@ const NovoDiretor = () => {
   //Para fazer o redirecionamento depois da edição
   const navigate = useNavigate();
 
- 
+
   function cadastrarDiretor(data) {
     console.log(data);
     addDiretor(data).then((resposta) => {
@@ -40,8 +38,6 @@ const NovoDiretor = () => {
   useEffect(() => {
     carregarFilmes();
   }, []);
-  
-
 
   return (
     //criar um form do diretor contendo nome, nascimento e nacionalidade
