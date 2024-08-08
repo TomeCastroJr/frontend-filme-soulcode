@@ -1,7 +1,9 @@
-import { Button } from "react-bootstrap"
+import { Button, Table } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { getFilmes } from "../api/filme"
+import Loader from "../components/Loader"
+
 
 const Filmes = () => {
   const [filmes, setFilmes] = useState(null);
@@ -11,6 +13,10 @@ const Filmes = () => {
       console.log(dados);
       setFilmes(dados);
     })
+  }
+
+  function deletarFilme(id){
+    const deletar = confirm("Tem certeza que deseja excluir o filme ?")
   }
 
   useEffect(() => {
@@ -24,6 +30,42 @@ const Filmes = () => {
         Adicionar Filme
       </Button>
       <hr />
+      {
+        filmes ? 
+        <Table>
+                    <thead>
+            <tr>
+              <th>Id</th>
+              <th>Título</th>
+              <th>Descrição</th>
+              <th>Lançamento</th>
+              <th>Ação</th>
+            </tr>
+            {
+              filmes.map( (filme) => {
+                return (
+                  <tr key={filme.id}>
+                    <td>{ filme.id }</td>
+                    <td>{ filme.titulo }</td>
+                    <td>{ filme.descricao }</td>
+                    <td>{ filme.data_lancamento ? new Date(filme.data_lancamento+"T00:00:00").toLocaleDateString() : "-" }</td>
+                    <td>
+                      <div className="d-flex">
+                        <Button size="sm" variant="danger" as={Link} className="mx-2" onClick={()=> deletarFilme(filme.id)}>Excluir</Button>
+                        <Button size="sm" as={Link} to={`/filme/editar/${filme.id}`}>
+                          Editar
+                        </Button>
+                      </div>
+                    </td>
+                  </tr>
+                )
+              })
+            }
+          </thead>
+        </Table>:
+        <Loader />
+      }
+
     </main>
   )
 }
