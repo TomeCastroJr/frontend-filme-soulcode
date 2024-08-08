@@ -1,8 +1,9 @@
 import { Button, Table } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
-import { getFilmes } from "../api/filme"
+import { deleteFilme, getFilmes } from "../api/filme"
 import Loader from "../components/Loader"
+import toast from "react-hot-toast"
 
 
 const Filmes = () => {
@@ -10,13 +11,20 @@ const Filmes = () => {
 
   function carregarFilmes() {
     getFilmes().then((dados) => {
-      console.log(dados);
       setFilmes(dados);
     })
   }
 
   function deletarFilme(id){
     const deletar = confirm("Tem certeza que deseja excluir o filme ?")
+
+    if(deletar){
+      deleteFilme(id).then( (resposta) => {
+        toast.success("Filme deletado");
+        carregarFilmes();
+      })
+    }
+
   }
 
   useEffect(() => {
