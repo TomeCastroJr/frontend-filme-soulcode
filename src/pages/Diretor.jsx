@@ -1,18 +1,17 @@
 import { Button, Table } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import { useState, useEffect } from "react";
-import { getDiretor } from "../api/diretor";
+import { getDiretores } from "../api/diretor";
 import Loader from "../components/Loader"
 import { deleteDiretor } from "../api/diretor";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+
 
 const Diretor = () => {
   const [diretor, setDiretor] = useState(null);
-  const navigate = useNavigate();
 
   function carregarDiretor() {
-    getDiretor().then((dados) => {
+    getDiretores().then((dados) => {
       console.log(dados);
       setDiretor(dados);
     })

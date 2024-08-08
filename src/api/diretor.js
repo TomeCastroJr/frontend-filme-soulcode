@@ -1,10 +1,10 @@
 import axios from "axios";
 
-export async function getDiretor() {
+export async function getDiretores() {
     const response = await axios.get("http://localhost:3333/diretor");
     return response.data;
 }
-export async function getDiretores(id){
+export async function getDiretor(id){
     const response = await axios.get(`http://localhost:3333/diretor/${id}`);
     return response.data;
 }
