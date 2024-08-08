@@ -6,10 +6,12 @@ import Loader from "../components/Loader"
 import toast from "react-hot-toast"
 
 
+
 const Filmes = () => {
   const [filmes, setFilmes] = useState(null);
 
   function carregarFilmes() {
+
     getFilmes().then((dados) => {
       setFilmes(dados);
     })

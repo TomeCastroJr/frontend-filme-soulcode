@@ -1,10 +1,11 @@
 import axios from "axios";
 
 // GET filmes
-export async function getFilmes() {
+export async function getFilme() {
     const response = await axios.get("http://localhost:3333/filme");
     return response.data;
 }
+
 
 export async function getFilme(id) {
     const response = await axios.get(`http://localhost:3333/filme/${id}`);
@@ -27,5 +28,4 @@ export async function updateFilme(id, data) {
 export async function deleteFilme(id) {
     const response = await axios.delete(`http://localhost:3333/filme/${id}`);
 
-    return response.data;
 }
