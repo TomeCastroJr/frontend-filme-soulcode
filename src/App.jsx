@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Filmes from "./pages/Filmes";
 import NovoFilme from "./pages/NovoFilme";
@@ -36,6 +37,7 @@ function App() {
           
           <Route path="*" element={<NotFound/>} />
         </Routes>
+        <Footer /> 
       </BrowserRouter>
       <Toaster position="top-center" />
     </>

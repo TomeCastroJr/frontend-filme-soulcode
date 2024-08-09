@@ -20,9 +20,9 @@ const NovoFilme = () => {
 
   return (
     <main className="mt-4 container">
-        <h1>Novo Filme</h1>
+        <h1 className="text-color text-center">Novo Filme</h1>
         <hr />
-        <form onSubmit={handleSubmit(cadastrarFilme)}>
+        <form onSubmit={handleSubmit(cadastrarFilme)} className="text-color text-center">
         <div>
           <label htmlFor="titulo">Título</label>
           <input 
@@ -54,15 +54,16 @@ const NovoFilme = () => {
           <input 
             type="date" 
             id="data_lancamento"
-            className="form-control"
+            className="form-control text-center"
             {...register("data_lancamento", { required: true })}
           />
           {errors.data_lancamento && (
             <smal className="text-danger">Data obrigatória</smal>
           )}
         </div>
-        
-        <Button className="mt-3" type="submit">
+      
+          
+        <Button className="mt-3 mb-3" type="submit" variant="warning">
           Cadastrar filme
         </Button>
         </form>

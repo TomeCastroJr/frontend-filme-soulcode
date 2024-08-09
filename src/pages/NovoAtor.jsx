@@ -24,14 +24,20 @@ const NovoAtor = () => {
           setFilmes(dados);
         });
     }
+    function carregarAtores(){
+      getAtores().then( (dados) => {
+         setAtores(dados) 
+      })
+  }
       useEffect(() => {
+        carregarAtores();
         carregarFilmes();
       }, []);
 
 
   return (
     <main className="mt-4 container">
-    <h1>Cadastrar Ator</h1>
+    <h1 > Cadastrar Ator</h1>
     <hr />
     <form onSubmit={handleSubmit(cadastrarAtor)}>
         <div>

@@ -1,12 +1,10 @@
 import { Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { addDiretor } from "../api/diretor";
 import { useEffect, useState } from "react";
 import { getFilmes } from "../api/filme";
-
-
 
 const NovoDiretor = () => {
   // método useForm
@@ -21,7 +19,7 @@ const NovoDiretor = () => {
   //Para fazer o redirecionamento depois da edição
   const navigate = useNavigate();
 
- 
+
   function cadastrarDiretor(data) {
     console.log(data);
     addDiretor(data).then((resposta) => {
@@ -40,15 +38,13 @@ const NovoDiretor = () => {
   useEffect(() => {
     carregarFilmes();
   }, []);
-  
-
 
   return (
     //criar um form do diretor contendo nome, nascimento e nacionalidade
     <main className="mt-4 container">
-      <h1>Novo Diretor</h1>
+      <h1 className="text-color text-center">Novo Diretor</h1>
       <hr />
-      <form onSubmit={handleSubmit(cadastrarDiretor)}>
+      <form onSubmit={handleSubmit(cadastrarDiretor)} className="text-color text-center">
         <div className="mb-3">
           <label htmlFor="nome" className="form-label">Nome</label>
           <input
@@ -64,7 +60,7 @@ const NovoDiretor = () => {
           <label htmlFor="nascimento" className="form-label">Data de Nascimento</label>
           <input
             type="date"
-            className={`form-control ${errors.nascimento ? "is-invalid" : ""}`}
+            className={`form-control ${errors.nascimento ? "is-invalid" : ""} text-center `}
             id="nascimento"
             {...register("nascimento", { required: "A data de nascimento é obrigatória" })}
           />
@@ -87,7 +83,7 @@ const NovoDiretor = () => {
             className="form-select"
             {...register("filmeId", { required: true, valueAsNumber: true })}
           >
-            <option value="">Selecione um filme</option>
+            <option value="" className="text-center">Selecione um filme</option>
             {filmes.map((filme) => {
               return (
                 <option key={filme.id} value={filme.id}>
@@ -101,7 +97,7 @@ const NovoDiretor = () => {
           )}
         </div>
 
-        <Button type="submit" variant="primary">Adicionar</Button>
+        <Button className="mt-3 mb-3" type="submit" variant="primary" variant="warning">Adicionar</Button>
       </form>
     </main>
   );

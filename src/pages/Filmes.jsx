@@ -1,4 +1,4 @@
-import { Button, Table } from "react-bootstrap"
+import { Button, Table, Card } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { deleteFilme, getFilmes } from "../api/filme"
@@ -16,11 +16,11 @@ const Filmes = () => {
     })
   }
 
-  function deletarFilme(id){
+  function deletarFilme(id) {
     const deletar = confirm("Tem certeza que deseja excluir o filme ?")
 
-    if(deletar){
-      deleteFilme(id).then( (resposta) => {
+    if (deletar) {
+      deleteFilme(id).then((resposta) => {
         toast.success("Filme deletado");
         carregarFilmes();
       })
@@ -33,50 +33,41 @@ const Filmes = () => {
   }, [])
 
   return (
-    <main className="mt-4 container">
-      <h1>Filmes</h1>
-      <Button as={Link} to="/filme/novo">
+    
+    <>
+    <div className="d-flex flex-column head">
+    <h1 className="text-center mt-3 text-color">Filmes</h1>
+     <Button className="bttn" variant="warning" as={Link} to="/filme/novo">
         Adicionar Filme
       </Button>
+      </div>
+    <main className="mt-4 container d-flex text-center main">
       <hr />
-      {
-        filmes ? 
-        <Table>
-                    <thead>
-            <tr>
-              <th>Id</th>
-              <th>Título</th>
-              <th>Descrição</th>
-              <th>Lançamento</th>
-              <th>Ação</th>
-            </tr>
-            {
-              filmes.map( (filme) => {
-                return (
-                  <tr key={filme.id}>
-                    <td>{ filme.id }</td>
-                    <td>{ filme.titulo }</td>
-                    <td>{ filme.descricao }</td>
-                    <td>{ filme.data_lancamento ? new Date(filme.data_lancamento+"T00:00:00").toLocaleDateString() : "-" }</td>
-                    <td>
-                      <div className="d-flex">
-                        <Button size="sm" variant="danger" as={Link} className="mx-2" onClick={()=> deletarFilme(filme.id)}>Excluir</Button>
-                        <Button size="sm" as={Link} to={`/filme/editar/${filme.id}`}>
-                          Editar
-                        </Button>
-                      </div>
-                    </td>
-                  </tr>
-                )
-              })
-            }
-          </thead>
-        </Table>:
-        <Loader />
-      }
+      {filmes ?
 
-    </main>
-  )
-}
+        filmes.map((filme) => {
 
-export default Filmes
+          return (
+
+            <><Card className="container d-flex card-style">
+              <Card.Body className="c-body">
+                <Card.Title>{filme.titulo}</Card.Title>
+                <Card.Text>Lançamento: {filme.data_lancamento ? new Date(filme.data_lancamento + "T00:00:00").toLocaleDateString() : "-"}</Card.Text>
+                <Card.Text> ID: {filme.id}</Card.Text>
+                <Card.Text>{filme.descricao}</Card.Text>
+                </Card.Body>
+                <div className="d-flex btn-area">
+                  <Button size="sm" variant="outline-danger" as={Link} className="mx-2" onClick={() => deletarFilme(filme.id)}>Excluir</Button>
+                  <Button size="sm" variant="outline-dark" as={Link} to={`/filme/editar/${filme.id}`}>
+                    Editar
+                  </Button>
+                </div>
+            </Card> </>)
+        })
+
+        : <Loader />}
+      <hr />
+    </main></>
+  )}
+
+  export default Filmes;

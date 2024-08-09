@@ -1,4 +1,4 @@
-import { Button, Table } from "react-bootstrap"
+import { Button, Card} from "react-bootstrap"
 import { Link } from "react-router-dom"
 import { useState, useEffect } from "react";
 import { getDiretores } from "../api/diretor";
@@ -30,54 +30,44 @@ const Diretor = () => {
   ;
   useEffect(() => {
     carregarDiretor();
-  }, []);
-  
+  }, [])
   return (
-    <main className="mt-4 container">
-      <h1>Diretor</h1>
-      <Button as={Link} to="/diretor/novo">
-        Adicionar Diretor
-      </Button>
-      {
-        diretor ?
-          <Table>
-            <thead>
-              <tr>
-                <th>Id</th>
-                <th>Nome</th>
-                <th>Nascimento</th>
-                <th>Nacionalidade</th>
-                <th>Ação</th>
-              </tr>
-              {
-                diretor.map((diretor) => {
-                  return (
-                    <tr key={diretor.id}>
-                      <td>{diretor.id}</td>
-                      <td>{diretor.nome}</td>
-                      <td>{diretor.nascimento}</td>
-                      <td>{diretor.nacionalidade}</td>
+    <>
+    <div className="d-flex flex-column head">
+    <h1 className="mt-3 text-color">Diretores</h1>
+    <Button variant="warning" as={Link} to="/diretor/novo" className="bttn">
+      Adicionar Diretor
+    </Button>
+    </div>
+    <main className="mt-4 container d-flex text-center main ">
+        <hr />
 
-                      <td>
-                        <div className="d-flex">
-                          <Button size="sm" variant="danger" as={Link} className="mx-2" onClick={() => deletarDiretor(diretor.id)} >Excluir</Button>
-                          <Button size="sm" as={Link} to={`/diretor/editar/${diretor.id}`}>
-                            Editar
-                          </Button>
-                        </div>
-                      </td>
-                    </tr>
-                  )
-                })
-              }
-            </thead>
-          </Table> :
-          <Loader />
-      }
+        {diretor ?
+          diretor.map((diretor) => {
 
-      <hr />
-    </main>
-  )
-}
+            return (
+
+              <>
+              <Card className="container d-flex card-style">
+                <Card.Body className="c-body">
+                  <Card.Title>{diretor.nome}</Card.Title>
+                  <Card.Text>{diretor.nacionalidade}</Card.Text>
+                  <Card.Text> ID: {diretor.id}</Card.Text>
+                  <Card.Text> Data de Nascimento: {diretor.nascimento}</Card.Text>
+                </Card.Body>
+                <div className="d-flex btn-area">
+                  <Button size="sm" variant="outline-danger" as={Link} className="mx-2" onClick={() => deletarDiretor(diretor.id)}>Excluir</Button>
+                  <Button size="sm" variant="outline-dark" as={Link} to={`/diretor/editar/${diretor.id}`}>
+                    Editar
+                  </Button>
+                </div>
+              </Card> </>);
+          })
+
+          : <Loader />}
+        <hr />
+      </main></>
+    )}
+  
 
 export default Diretor
