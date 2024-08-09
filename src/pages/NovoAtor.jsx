@@ -1,7 +1,7 @@
 import { Button } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from "react-router-dom"
-import { addAtor } from '../api/atores';
+import { addAtor, getAtores } from '../api/atores';
 import toast from 'react-hot-toast';
 import { getFilmes } from '../api/filme';
 import { useEffect, useState } from 'react';
@@ -11,6 +11,8 @@ const NovoAtor = () => {
 
     const [filmes, setFilmes] = useState([]);
     const navigate = useNavigate();
+
+    const [atores, setAtores] = useState([]);
 
     function cadastrarAtor(dados){
         addAtor(dados).then( () => {
@@ -24,14 +26,20 @@ const NovoAtor = () => {
           setFilmes(dados);
         });
     }
+    function carregarAtores(){
+      getAtores().then( (dados) => {
+         setAtores(dados) 
+      })
+  }
       useEffect(() => {
+        carregarAtores();
         carregarFilmes();
       }, []);
 
 
   return (
     <main className="mt-4 container">
-    <h1>Cadastrar Ator</h1>
+    <h1 > Cadastrar Ator</h1>
     <hr />
     <form onSubmit={handleSubmit(cadastrarAtor)}>
         <div>
