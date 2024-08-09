@@ -36,8 +36,6 @@ const Atores = () => {
       })
     }
 
-    
-
     useEffect( ()=> {
         carregarAtores();
         carregarfilmes();
