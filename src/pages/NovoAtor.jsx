@@ -39,9 +39,9 @@ const NovoAtor = () => {
 
   return (
     <main className="mt-4 container">
-    <h1 > Cadastrar Ator</h1>
+    <h1 className='text-center text-color'> Cadastrar Ator</h1>
     <hr />
-    <form onSubmit={handleSubmit(cadastrarAtor)}>
+    <form onSubmit={handleSubmit(cadastrarAtor)} className='text-center text-color'>
         <div>
           <label htmlFor="nome">Nome</label>
           <input 
@@ -60,7 +60,7 @@ const NovoAtor = () => {
           <input 
             type="date" 
             id="nascimento"
-            className="form-control"
+            className="form-control text-center"
             {...register("nascimento", { required: true })}
           />
           {errors.nascimento && (
@@ -87,7 +87,7 @@ const NovoAtor = () => {
                 className="form-select"
                 {...register("filmeId", { required: true, valueAsNumber: true })}
             >
-                <option value="">Selecione um filme</option>
+                <option value="" className='text-center'>Selecione um filme</option>
                 {filmes.map((filme) => {
                 return (
                     <option key={filme.id} value={filme.id}>
