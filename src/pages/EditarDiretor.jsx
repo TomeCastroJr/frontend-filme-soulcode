@@ -28,7 +28,6 @@ const EditarDiretor = () => {
       navigate("/diretor")
     }).catch((err) => {
       toast.error("Erro ao atualizar o diretor!")
-      console.error(err);
     })
   }
 

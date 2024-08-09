@@ -10,6 +10,7 @@ const Header = () => {
         <div className="d-flex gap-5">
           <Link className="color-header" to="/filme">Filmes</Link>
           <Link className="color-header" to="/diretor">Diretores</Link>
+          <Link className="color-header" to="/atores">Atores</Link>
         </div>
       </nav>
     </header>

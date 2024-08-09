@@ -65,7 +65,7 @@ const NovoFilme = () => {
         <Button className="mt-3" type="submit">
           Cadastrar filme
         </Button>
-      </form>
+        </form>
     </main>
   )
 }

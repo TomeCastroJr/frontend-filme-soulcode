@@ -15,6 +15,7 @@ const EditarFilme = () => {
 
   function carregarFilme(){
     getFilme(id).then( (dados) => {
+      console.log(dados)
       reset(dados)
 
     }).catch( (err) => {
