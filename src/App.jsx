@@ -9,6 +9,9 @@ import NotFound from "./pages/NotFound";
 import Diretor from "./pages/Diretor";
 import NovoDiretor from "./pages/NovoDiretor";
 import EditarDiretor from "./pages/EditarDiretor";
+import Atores from "./pages/Atores";
+import NovoAtor from "./pages/NovoAtor";
+import EditarAtor from "./pages/EditarAtor";
 
 function App() {
 
@@ -26,6 +29,10 @@ function App() {
           <Route path="/diretor" element={<Diretor/>} />
           <Route path="/diretor/novo" element={<NovoDiretor/>} />
           <Route path="/diretor/editar/:id" element={<EditarDiretor/>} />
+
+          <Route path="/atores" element={<Atores/>}/>
+          <Route path="/atores/novo" element={<NovoAtor/>}/>
+          <Route path="/atores/editar/:id" element={<EditarAtor/>}/>
           
           <Route path="*" element={<NotFound/>} />
         </Routes>

@@ -11,7 +11,6 @@ const Filmes = () => {
   const [filmes, setFilmes] = useState(null);
 
   function carregarFilmes() {
-
     getFilmes().then((dados) => {
       setFilmes(dados);
     })
